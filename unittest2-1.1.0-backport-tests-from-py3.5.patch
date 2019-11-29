@@ -1,5 +1,5 @@
---- unittest2/test/test_loader.py.orig	2015-11-15 09:26:43.752421511 +0100
-+++ unittest2/test/test_loader.py	2015-11-15 11:02:43.944233784 +0100
+--- a/unittest2/test/test_loader.py.orig	2015-11-15 09:26:43.752421511 +0100
++++ b/unittest2/test/test_loader.py	2015-11-15 11:02:43.944233784 +0100
 @@ -512,10 +512,20 @@
      def test_loadTestsFromName__relative_malformed_name(self):
          loader = unittest.TestLoader()
