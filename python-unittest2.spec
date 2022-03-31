@@ -1,6 +1,6 @@
 Name:           python-unittest2
 Version:        1.1.0
-Release:        17
+Release:        18
 Summary:        New features added to the unittest testing framework in Python 2.7 and onwards
 License:        BSD
 URL:            http://pypi.python.org/pypi/unittest2
@@ -8,6 +8,7 @@ Source0:        https://pypi.python.org/packages/source/u/unittest2/unittest2-%{
 
 Patch0000:      unittest2-1.1.0-remove-argparse-from-requires.patch
 Patch0001:      unittest2-1.1.0-backport-tests-from-py3.5.patch
+Patch0002:      fix-collections.MutableMapping-no-support-for-python-3.10.patch
 BuildArch:      noarch
 
 %description
@@ -51,6 +52,9 @@ cd -
 %{python3_sitelib}/unittest2*
 
 %changelog
+* Thu Mar 22 2022 wulei <wulei80@huawei.com> - 1.1.0-18
+- Fix collections.MutableMapping no support for python 3.10
+
 * Fri Sep 11 2020 zhangjiapeng <zhangjiapeng9@huawei.com> - 1.1.0-17
 - Remove python2-unittest2 subpackage
 
