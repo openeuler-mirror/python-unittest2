@@ -1,0 +1,14 @@
+diff -Nur a/unittest2/compatibility.py b/unittest2/compatibility.py
+--- a/unittest2/compatibility.py	2014-10-29 18:51:58.000000000 +0800
++++ b/unittest2/compatibility.py	2022-03-31 11:21:09.580805329 +0800
+@@ -1,4 +1,10 @@
+ import collections
++try:
++    from collections import abc
++    collections.MutableMapping = abc.MutableMapping
++except:
++    pass
++
+ import os
+ import sys
+ 
