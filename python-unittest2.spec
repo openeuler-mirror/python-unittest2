@@ -1,6 +1,8 @@
+%global bootstrap_traceback2 0
+
 Name:           python-unittest2
 Version:        1.1.0
-Release:        17
+Release:        18
 Summary:        New features added to the unittest testing framework in Python 2.7 and onwards
 License:        BSD
 URL:            http://pypi.python.org/pypi/unittest2
@@ -8,6 +10,9 @@ Source0:        https://pypi.python.org/packages/source/u/unittest2/unittest2-%{
 
 Patch0000:      unittest2-1.1.0-remove-argparse-from-requires.patch
 Patch0001:      unittest2-1.1.0-backport-tests-from-py3.5.patch
+%if %{bootstrap_traceback2}
+Patch0002:      unittest2-1.1.0-remove-traceback2-from-requires.patch
+%endif
 BuildArch:      noarch
 
 %description
@@ -18,8 +23,14 @@ It is tested to run on Python 2.6, 2.7, 3.2, 3.3, 3.4 and pypy.
 %package -n python3-unittest2
 Summary:        New features added to the unittest testing framework in Python 2.7 and onwards
 %{?python_provide:%python_provide python3-unittest2}
-BuildRequires:  python3-devel python3-setuptools python3-six python3-traceback2
-Requires:       python3-setuptools python3-six python3-traceback2
+BuildRequires:  python3-devel python3-setuptools python3-six
+%if ! 0%{?bootstrap_traceback2}
+BuildRequires:  python3-traceback2
+%endif # bootstrap_traceback2
+Requires:       python3-setuptools python3-six
+%if ! 0%{?bootstrap_traceback2}
+Requires:       python3-traceback2
+%endif
 
 %description -n python3-unittest2
 unittest2 is a backport of the new features added to
@@ -42,7 +53,9 @@ ln -s unit2-%{python3_version} python3-unit2
 cd -
 
 %check
+%if ! 0%{?bootstrap_traceback2}
 %{__python3} -m unittest2
+%endif # bootstrap_traceback2
 
 %files -n python3-unittest2
 %doc README.txt
@@ -51,6 +64,9 @@ cd -
 %{python3_sitelib}/unittest2*
 
 %changelog
+* Sun Apr 24 2022 lvxiaoqian <xiaoqian@nj.iscas.ac.cn> - 1.1.0-18
+- remove traceback2 from requires when bootstrap build
+
 * Fri Sep 11 2020 zhangjiapeng <zhangjiapeng9@huawei.com> - 1.1.0-17
 - Remove python2-unittest2 subpackage
 
