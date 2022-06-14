@@ -52,7 +52,7 @@ cd -
 %{python3_sitelib}/unittest2*
 
 %changelog
-* Thu Mar 22 2022 wulei <wulei80@huawei.com> - 1.1.0-18
+* Tue Mar 22 2022 wulei <wulei80@huawei.com> - 1.1.0-18
 - Fix collections.MutableMapping no support for python 3.10
 
 * Fri Sep 11 2020 zhangjiapeng <zhangjiapeng9@huawei.com> - 1.1.0-17
